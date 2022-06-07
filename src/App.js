@@ -1,9 +1,10 @@
 import { createContext, useReducer } from "react";
 import Button from "./components/Button"
 
-const initialState = { count: 0, user: 'null' }
-export const context = createContext();
+const initialState = { count: 0, user: null } // initialState for the useReducer hook
+export const context = createContext(); // export the context hook to use in the consumer
 
+// reducer hook for the useReducer hook
 function reducer(state, action) {
 
   switch (action.type) {
@@ -17,21 +18,21 @@ function reducer(state, action) {
 
 function App() {
 
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [state, dispatchCount] = useReducer(reducer, initialState)
 
 
   return (
     <>
-      <context.Provider value={{ dispatch, state }}>
+      <context.Provider value={{ dispatch: dispatchCount, state }}>
 
         <h1>{state.count}</h1>
 
-        <button onClick={() => dispatch({ type: 'increment' })} >increment</button>
-        <button onClick={() => dispatch({ type: 'decrement' })} >decrement</button>
-        <button onClick={() => dispatch({ type: 'addUser' })}>add new user</button>
-        <button onClick={() => dispatch({ type: 'default' })}> reset</button>
+        <button onClick={() => dispatchCount({ type: 'increment', payload: 'hey' })} >increment</button>
+        <button onClick={() => dispatchCount({ type: 'decrement' })} >decrement</button>
+        <button onClick={() => dispatchCount({ type: 'addUser' })}>add new user</button>
+        <button onClick={() => dispatchCount({ type: 'default' })}> reset</button>
         <h1>{state.user}</h1>
-        {/* <Button /> */}
+        <Button />
       </context.Provider>
     </>
   );
