@@ -1,11 +1,3 @@
----
-theme: default
-class:
-  - lead
-  - invert
-marp: true
---- 
-
 # _useReducer Hook_
 ###### presentation by: **Bakri Hmouda**
 
